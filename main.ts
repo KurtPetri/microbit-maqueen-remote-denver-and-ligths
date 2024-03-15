@@ -61,10 +61,12 @@ function speedDown(speed: number) {
     }
 })
 input.onButtonPressed(Button.A, function () {
-    maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 50)
+    strip = neopixel.create(DigitalPin.P15, 4, NeoPixelMode.RGB)
+    strip.showRainbow(1, 360)
+    strip.show()
 })
 input.onButtonPressed(Button.B, function () {
-    maqueen.motorStop(maqueen.Motors.All)
+    strip.clear()
 })
 let strip: neopixel.Strip = null
 let stopKey2 = 0
