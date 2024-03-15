@@ -60,6 +60,13 @@ function speedDown(speed: number) {
             speed = 10;
     }
 })
+input.onButtonPressed(Button.A, function () {
+    maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 50)
+})
+input.onButtonPressed(Button.B, function () {
+    maqueen.motorStop(maqueen.Motors.All)
+})
+let strip: neopixel.Strip = null
 let stopKey2 = 0
 let stopKey = 0
 let rightKey = 0
@@ -68,10 +75,6 @@ let backwardKey = 0
 let forwardKey = 0
 let speedUpKey = 0
 let speedDownKey = 0
-let strip: neopixel.Strip = null
-strip = neopixel.create(DigitalPin.P15, 4, NeoPixelMode.RGB)
-strip.showRainbow(1, 360)
-strip.show()
 let speed = 40
 let turnSpeed = 25
 speedDownKey = 65
@@ -82,6 +85,9 @@ leftKey = 17
 rightKey = 16
 stopKey = 10
 stopKey2 = 13
+strip = neopixel.create(DigitalPin.P15, 4, NeoPixelMode.RGB)
+strip.showRainbow(1, 360)
+strip.show()
 basic.showIcon(IconNames.Ghost)
 basic.forever(function () {
     strip.rotate(1)
